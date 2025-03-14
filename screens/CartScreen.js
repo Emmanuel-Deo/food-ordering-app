@@ -22,8 +22,13 @@ const CartScreen = ({ route, navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 20 },
+  container: {
+    flex: 1,
+    paddingTop: 50,
+    paddingLeft: 20,
+    paddingRight: 20,
+   },
+  title: { fontSize: 24, fontWeight: 'bold', margin: 10 }
 })
-
 
 export default CartScreen;

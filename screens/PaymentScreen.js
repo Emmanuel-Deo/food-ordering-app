@@ -11,8 +11,8 @@ const PaymentScreen = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: "center", alignItems: "center" },
-  title: { fontSize: 24, fontWeight: "bold", marginBottom: 10 }
+  container: { flex: 1, padding: 20 },
+  title: { fontSize: 24, fontWeight: 'bold', margin: 10 }
 });
 
 export default PaymentScreen;

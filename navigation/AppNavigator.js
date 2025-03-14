@@ -6,26 +6,35 @@ import { Ionicons } from '@expo/vector-icons';
 
 import MenuScreen from '../screens/MenuScreen';
 import CartScreen from '../screens/CartScreen';
-import PaymentScreen from '../screens/PaymentScreen';
+import OrdersScreen from '../screens/OrdersScreen';
+import ItemScreen from '../screens/ItemScreen';
+import ProfileScreen from '../screens/ProfileScreen';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const MenuStack = () => (
-  <Stack.Navigator>
-    <Stack.Screen name="Menu" component={MenuScreen} />
+  <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Screen name="MenuScreen" component={MenuScreen} />
+    <Stack.Screen name="Item" component={ItemScreen} />
   </Stack.Navigator>
 );
 
 const CartStack = () => (
-  <Stack.Navigator>
-    <Stack.Screen name="Cart" component={CartScreen} />
+  <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Screen name="CartScreen" component={CartScreen} />
   </Stack.Navigator>
 );
 
-const PaymentStack = () => (
-  <Stack.Navigator>
-    <Stack.Screen name="Payment" component={PaymentScreen} />
+const OrderStack = () => (
+  <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Screen name="PaymentScreen" component={OrdersScreen} />
+  </Stack.Navigator>
+);
+
+const ProfileStack = () => (
+  <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
   </Stack.Navigator>
 );
 
@@ -40,18 +49,22 @@ const AppNavigator = () => {
               iconName = 'restaurant';
             } else if (route.name === 'Cart') {
               iconName = 'cart';
-            } else if (route.name === 'Payment') {
-              iconName = 'cash';
+            } else if (route.name === 'Orders') {
+              iconName = 'list';
+            } else if (route.name === 'Profile') {
+              iconName = 'person';
             }
             return <Ionicons name={iconName} size={size} color={color} />;
           },
           tabBarActiveTintColor: 'tomato',
           tabBarInactiveTintColor: 'gray',
+          headerShown: false,
         })}
       >
         <Tab.Screen name="Menu" component={MenuStack} />
         <Tab.Screen name="Cart" component={CartStack} />
-        <Tab.Screen name="Payment" component={PaymentStack} />
+        <Tab.Screen name="Orders" component={OrderStack} />
+        <Tab.Screen name="Profile" component={ProfileStack} />
       </Tab.Navigator>
     </NavigationContainer>
   );
