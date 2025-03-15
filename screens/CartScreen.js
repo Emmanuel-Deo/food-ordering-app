@@ -53,7 +53,7 @@ const CartScreen = ({ navigation }) => {
             <Image source={{ uri: item.image }} style={styles.itemImage} />
             <View style={styles.itemDetails}>
               <Text style={styles.itemName}>{item.name}</Text>
-              <Text style={styles.itemPrice}>${Number(item.price).toFixed(2)}</Text>
+              <Text style={styles.itemPrice}>Sh {Number(item.price).toFixed(2)}</Text>
               <View style={styles.quantityContainer}>
                 <TouchableOpacity onPress={() => updateQuantity(item.id, -1)}>
                   <AntDesign name="minus" size={20} color="black" />
@@ -64,16 +64,16 @@ const CartScreen = ({ navigation }) => {
                 </TouchableOpacity>
               </View>
             </View>
-            <Text style={styles.itemTotal}>${(Number(item.price) * item.quantity).toFixed(2)}</Text>
+            <Text style={styles.itemTotal}>Sh {(Number(item.price) * item.quantity).toFixed(2)}</Text>
           </View>
         )}
       />
       <View style={styles.paymentContainer}>
         <TextInput style={styles.promoInput} placeholder="Promo Code" value={promoCode} onChangeText={setPromoCode} />
-        <View style={styles.paymentRow}><Text>Subtotal</Text><Text>${subtotal.toFixed(2)}</Text></View>
-        <View style={styles.paymentRow}><Text>Delivery Charge</Text><Text>${deliveryCharge.toFixed(2)}</Text></View>
-        <View style={styles.paymentRow}><Text>Discount</Text><Text>-${discount.toFixed(2)}</Text></View>
-        <View style={styles.paymentRowTotal}><Text style={styles.totalText}>Total</Text><Text style={styles.totalText}>${total.toFixed(2)}</Text></View>
+        <View style={styles.paymentRow}><Text>Subtotal</Text><Text>Sh {subtotal.toFixed(2)}</Text></View>
+        <View style={styles.paymentRow}><Text>Delivery Charge</Text><Text>Sh {deliveryCharge.toFixed(2)}</Text></View>
+        <View style={styles.paymentRow}><Text>Discount</Text><Text>-Sh {discount.toFixed(2)}</Text></View>
+        <View style={styles.paymentRowTotal}><Text style={styles.totalText}>Total</Text><Text style={styles.totalText}>Sh {total.toFixed(2)}</Text></View>
       </View>
       <TouchableOpacity style={styles.orderButton} onPress={() => navigation.navigate("Payment")}>
         <Text style={styles.orderButtonText}>Place my order</Text>
