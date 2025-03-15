@@ -7,7 +7,7 @@ const dummyMenu = [
     id: "1",
     name: "Hot Pizza",
     description: "Mushrooms and chili",
-    price: "100/=",
+    price: "100",
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDs7RrslNWaoTmXVw_0ghb08meCz9tthocKg&s",
   },
@@ -15,7 +15,7 @@ const dummyMenu = [
     id: "2",
     name: "Burger",
     description: "Mushrooms and chili",
-    price: "100/=",
+    price: "100",
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRm_4wmXirYrbq9GbjLf_zhQgZFdhcD7yD8sg&s",
   },
@@ -23,7 +23,7 @@ const dummyMenu = [
     id: "3",
     name: "Lasagna",
     description: "Mushrooms and chili",
-    price: "100/=",
+    price: "100",
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8kya-SqJ_wdoYsXiz6EcNdD0n8CH-aNRBMQ&s",
   },
@@ -31,7 +31,7 @@ const dummyMenu = [
     id: "4",
     name: "Hot Pizza",
     description: "Mushrooms and chili",
-    price: "100/=",
+    price: "100",
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDs7RrslNWaoTmXVw_0ghb08meCz9tthocKg&s",
   },
@@ -39,7 +39,7 @@ const dummyMenu = [
     id: "5",
     name: "Burger",
     description: "Mushrooms and chili",
-    price: "100/=",
+    price: "100",
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRm_4wmXirYrbq9GbjLf_zhQgZFdhcD7yD8sg&s",
   },
@@ -47,7 +47,7 @@ const dummyMenu = [
     id: "6",
     name: "Lasagna",
     description: "Mushrooms and chili",
-    price: "100/=",
+    price: "100",
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8kya-SqJ_wdoYsXiz6EcNdD0n8CH-aNRBMQ&s",
   },
@@ -55,7 +55,7 @@ const dummyMenu = [
     id: "7",
     name: "Hot Pizza",
     description: "Mushrooms and chili",
-    price: "100/=",
+    price: "100",
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDs7RrslNWaoTmXVw_0ghb08meCz9tthocKg&s",
   },
@@ -63,7 +63,7 @@ const dummyMenu = [
     id: "8",
     name: "Burger",
     description: "Mushrooms and chili",
-    price: "100/=",
+    price: "100",
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRm_4wmXirYrbq9GbjLf_zhQgZFdhcD7yD8sg&s",
   },
@@ -71,7 +71,7 @@ const dummyMenu = [
     id: "9",
     name: "Lasagna",
     description: "Mushrooms and chili",
-    price: "100/=",
+    price: "100",
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8kya-SqJ_wdoYsXiz6EcNdD0n8CH-aNRBMQ&s",
   },
@@ -128,7 +128,7 @@ const MenuScreen = ({ navigation }) => {
               <Text style={styles.foodTitle}>{item.name}</Text>
               <Text style={styles.foodDescription}>{item.description}</Text>
               <Text style={styles.foodPrice}>
-                {typeof item.price === "number" ? `Sh ${item.price.toFixed(2)}/=` : item.price}
+                {typeof item.price === "number" ? `Sh ${item.price.toFixed(2)}` : item.price}
               </Text>
             </View> 
           </TouchableOpacity>
@@ -160,9 +160,9 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   profilePic: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
+    width: 42,
+    height: 42,
+    borderRadius: 22,
   },
   heroTitle: {
     paddingTop: "16",
