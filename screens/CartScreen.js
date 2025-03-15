@@ -24,10 +24,17 @@ const CartScreen = ({ route, navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.deliveryContainer}>
-        <Text style={styles.deliveryLabel}>Deliver to</Text>
+        
         <TouchableOpacity style={styles.deliveryBox}>
+          <View>
+           <Text style={styles.deliveryLabel}>Deliver to</Text>
+          </View>
+          <View style ={styles.deliveryLocation}>
           <Text style={styles.deliveryText}>Jacaranda House 207, Kilimani Road, Nairobi</Text>
           <AntDesign name="down" size={16} color="black" />
+          </View>
+          
+          
         </TouchableOpacity>
       </View>
       <FlatList
@@ -87,14 +94,19 @@ const styles = StyleSheet.create({
   },
 
   deliveryBox: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+ 
     backgroundColor: "#FFE4B5",
     padding: 12,
     borderRadius: 10,
   
   },
+  deliveryLocation:{
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+
+
+
   deliveryText: { fontSize: 14, color: "#000" },
   
   // Cart Item Card
