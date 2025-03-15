@@ -32,7 +32,8 @@ const CartScreen = ({ navigation }) => {
     <View style={styles.container}>
       <View style={styles.deliveryContainer}>
         
-        <TouchableOpacity style={styles.deliveryBox}>
+        <TouchableOpacity style={styles.deliveryBox}
+        onPress={() => navigation.navigate("SetDeliveryLocation")}>
           <View>
            <Text style={styles.deliveryLabel}>Deliver to</Text>
           </View>

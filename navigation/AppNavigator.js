@@ -9,6 +9,7 @@ import CartScreen from '../screens/CartScreen';
 import OrdersScreen from '../screens/OrdersScreen';
 import ItemScreen from '../screens/ItemScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+import SetDeliveryLocation from '../screens/SetDeliveryLocation';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -23,6 +24,7 @@ const MenuStack = () => (
 const CartStack = () => (
   <Stack.Navigator screenOptions={{ headerShown: false }}>
     <Stack.Screen name="CartScreen" component={CartScreen} />
+    <Stack.Screen name="SetDeliveryLocation" component={SetDeliveryLocation} /> 
   </Stack.Navigator>
 );
 
