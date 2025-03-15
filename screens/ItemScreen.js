@@ -45,6 +45,9 @@ const ItemScreen = ({ route, navigation }) => {
         <AntDesign name="shoppingcart" size={24} color="white" />
       </TouchableOpacity>
 
+       {/* Short Paragraph Description */}
+       <Text style={styles.description}>{item.details}</Text>
+
     </View>
   );
 };
@@ -119,6 +122,14 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "white",
     marginRight: 10,
+  },
+
+  description: {
+    marginTop: 20,
+    fontSize: 16,
+    textAlign: "center",
+    color: "#555",
+    paddingHorizontal: 30,
   },
 });
 
