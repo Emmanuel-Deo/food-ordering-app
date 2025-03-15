@@ -2,11 +2,20 @@ import React, { useState } from "react";
 import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import { AntDesign } from "@expo/vector-icons"; 
 
+import { useCart } from '../contexts/CartContext'
+
 
 
 const ItemScreen = ({ route, navigation }) => {
   const { item } = route.params;
   const [quantity, setQuantity] = useState(1);
+  const { dispatch } = useCart();
+
+  const addToCart = () => {
+    dispatch({ type: 'ADD_TO_CART', payload: { ...item, quantity } });
+    navigation.navigate('Cart'); // Navigate to the Cart screen
+  };
+
 
   return (
     <View style={styles.container}>
@@ -26,9 +35,9 @@ const ItemScreen = ({ route, navigation }) => {
       </View>
       <View style={styles.infoContainer}>
         <Text style={styles.timeText}>15-20 min</Text>
-        <Text style={styles.price}>Sh {Number(item.price) * quantity}</Text>
+        <Text style={styles.price}>Sh {(Number(item.price) * quantity).toFixed(2)}</Text>
       </View>
-      <TouchableOpacity style={styles.cartButton} onPress={() => navigation.navigate("Cart", { item: { ...item, quantity } })}>
+      <TouchableOpacity style={styles.cartButton} onPress={addToCart}>
         <Text style={styles.cartButtonText}>Add to Cart</Text>
         <AntDesign name="shoppingcart" size={24} color="white" />
       </TouchableOpacity>

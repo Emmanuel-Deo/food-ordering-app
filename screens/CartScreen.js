@@ -1,24 +1,31 @@
 import React, { useState } from "react";
 import { View, Text, FlatList, Image, TouchableOpacity, TextInput, StyleSheet, Button } from "react-native";
 import { AntDesign } from "@expo/vector-icons"; // Install via `expo install @expo/vector-icons`
+import { useCart } from '../contexts/CartContext'
 
 
+const CartScreen = ({ navigation }) => {
+  const { cart, dispatch } = useCart();
+  const [promoCode, setPromoCode] = useState('');
 
-const CartScreen = ({ route, navigation }) => {
-  const [cart, setCart] = useState(route.params ? [{ ...route.params.item }] : []);
-  const [promoCode, setPromoCode] = useState("");
-  const deliveryCharge = 2;
-  const discount = 2;
+
 
   const updateQuantity = (id, change) => {
-    setCart((prevCart) =>
-      prevCart.map((item) =>
-        item.id === id ? { ...item, quantity: Math.max(1, item.quantity + change) } : item
-      )
-    );
+    const item = cart.find(item => item.id === id);
+    if (item) {
+      const newQuantity = item.quantity + change;
+      if (newQuantity > 0) {
+        dispatch({ type: 'ADD_TO_CART', payload: { ...item, quantity: change } });
+      } else {
+        dispatch({ type: 'REMOVE_FROM_CART', payload: { id } });
+      }
+    }
   };
 
-  const subtotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const subtotal = cart.reduce((acc, item) => acc + Number(item.price) * item.quantity, 0);
+  const deliveryCharge = cart.length > 0 ? 250 : 0;
+  const discount = 20;
+
   const total = subtotal + deliveryCharge - discount;
 
   return (
@@ -45,7 +52,7 @@ const CartScreen = ({ route, navigation }) => {
             <Image source={{ uri: item.image }} style={styles.itemImage} />
             <View style={styles.itemDetails}>
               <Text style={styles.itemName}>{item.name}</Text>
-              <Text style={styles.itemPrice}>${item.price.toFixed(2)}</Text>
+              <Text style={styles.itemPrice}>${Number(item.price).toFixed(2)}</Text>
               <View style={styles.quantityContainer}>
                 <TouchableOpacity onPress={() => updateQuantity(item.id, -1)}>
                   <AntDesign name="minus" size={20} color="black" />
@@ -56,7 +63,7 @@ const CartScreen = ({ route, navigation }) => {
                 </TouchableOpacity>
               </View>
             </View>
-            <Text style={styles.itemTotal}>${(item.price * item.quantity).toFixed(2)}</Text>
+            <Text style={styles.itemTotal}>${(Number(item.price) * item.quantity).toFixed(2)}</Text>
           </View>
         )}
       />
